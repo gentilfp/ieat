@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% current_user.restaurant.products.each do |product| %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= product.value %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

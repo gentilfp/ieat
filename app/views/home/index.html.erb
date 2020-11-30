@@ -3,31 +3,9 @@
 <% if user_signed_in? %>
   <% if current_user.restaurant? %>
     <p><%= current_user.restaurant.name %></p>
+    Products
+    <%= render 'products'%>
   <% else %>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Address</th>
-          <th>Total products</th>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @restaurants.each do |restaurant| %>
-          <tr>
-            <td><%= restaurant.name %></td>
-            <td><%= restaurant.address %></td>
-            <td><%= restaurant.total_products %></td>
-            <% if current_user.admin? %>
-              <td><%= link_to 'Show', restaurant %></td>
-              <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
-              <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <% end %>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= render 'restaurants' %>
   <% end %>
 <% end %>
