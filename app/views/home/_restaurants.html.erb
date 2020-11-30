@@ -19,6 +19,22 @@
           <td><%= link_to 'Edit', edit_restaurant_path(restaurant) %></td>
           <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
+
+        <table>
+          <tbody>
+            <% restaurant.products.each do |product| %>
+              <tr>
+                <%= form_tag('/orders') do %>
+                  <%= hidden_field_tag :product_id, product.id %>
+                  <td><%= product.name %></td>
+                  <td><%= product.value %></td>
+                  <td><%= submit_tag 'Order' %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
       </tr>
     <% end %>
   </tbody>
